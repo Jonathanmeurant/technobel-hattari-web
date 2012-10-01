@@ -124,6 +124,16 @@
     <servlet-name>NewGame</servlet-name>
     <url-pattern>/newgame</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GameAction</display-name>
+    <servlet-name>GameAction</servlet-name>
+    <servlet-class>hattari.web.game.servlets.GameAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameAction</servlet-name>
+    <url-pattern>/gameaction</url-pattern>
+  </servlet-mapping>
     <servlet>
     <description></description>
     <display-name>StartNewGameServlet</display-name>
