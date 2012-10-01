@@ -35,6 +35,7 @@ public class StartNewGameServlet extends HttpServlet {
 		}
 		
 		request.getSession().setAttribute("username", loggedUser.getUsername());
+		request.getSession().setAttribute("gameAction", "login");
 		request.getRequestDispatcher("/UserHasLogged").forward(request, response);
 	}
 
