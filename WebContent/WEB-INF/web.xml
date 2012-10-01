@@ -106,16 +106,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>UserHasLogged</display-name>
-    <servlet-name>UserHasLogged</servlet-name>
-    <servlet-class>hattari.web.game.servlets.UserHasLogged</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserHasLogged</servlet-name>
-    <url-pattern>/userhaslogged</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>NewGame</display-name>
     <servlet-name>NewGame</servlet-name>
     <servlet-class>hattari.web.game.servlets.NewGame</servlet-class>

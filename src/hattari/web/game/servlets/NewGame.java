@@ -6,11 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import be.technobel.domain.datamodel.GameLoop;
+
 /**
  * Servlet implementation class NewGame
  * @author André LAGUERRE
  * URL : http://<baseURL>/newgame
- * methode : 
+ * methode : POST
  */
 public class NewGame extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,14 +29,14 @@ public class NewGame extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.sendRedirect(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		getServletContext().removeAttribute("gameloop");
 	}
 
 }
