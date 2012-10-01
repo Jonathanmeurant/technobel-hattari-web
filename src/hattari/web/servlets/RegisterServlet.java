@@ -15,7 +15,7 @@ import hattari.web.util.Validation;
 
 public class RegisterServlet extends HttpServlet {
 	
-	@EJB (beanName="UserManagerBean")
+	@EJB
 	private UserRepository userRepository;
 	private static final long serialVersionUID = 1L;
        

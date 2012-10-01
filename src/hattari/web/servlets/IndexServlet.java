@@ -20,7 +20,7 @@ public class IndexServlet extends HttpServlet {
 		User loggedUser = (User) request.getSession().getAttribute("loggedUser");
 		
 		if(loggedUser!=null) {
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
 		} else {
 			doGet(request,response);
 		}
