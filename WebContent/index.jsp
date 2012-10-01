@@ -12,8 +12,8 @@
 <body>
 	<h1>MyForum</h1>
 	<%
-	User loggedUser = (User) session.getAttribute("loggedUser");
-	if(loggedUser==null){
+	
+	if(session.getAttribute("loggedUser") == null){
 	%>
 	<nav id="loginBar">
 		<nav class="form">
@@ -21,7 +21,7 @@
 				<fieldset id="login">
 					<legend>login</legend>
 					<p><label>Username :</label><input type="text" name="username" value="" autofocus required/></p>
-					<p><label>Password :</label><input type="password" name="pwd" value="" required /></p>
+					<p><label>Password :</label><input type="password" name="password" value="" required /></p>
 				</fieldset>
 			</form>
 		</nav>
@@ -30,7 +30,9 @@
 		</ul>
 	</nav>
 	<%}
-	else{%>
+	else{
+		User loggedUser = (User) session.getAttribute("loggedUser");
+	%>
 	<nav id="loginBar">
 		<ul class="logged">
 			<li>Bonjour <%=loggedUser.getUsername() %></li>
