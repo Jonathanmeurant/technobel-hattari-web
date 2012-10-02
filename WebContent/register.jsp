@@ -58,7 +58,7 @@
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio" checked="true" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 				</td>			 	
 			</tr>
 			<tr>
