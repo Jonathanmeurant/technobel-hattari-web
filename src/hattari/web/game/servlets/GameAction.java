@@ -94,7 +94,29 @@ public class GameAction extends HttpServlet {
 				request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
 			break;
 			
-		case "initGame":
+		case "waitinit" :
+			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
+			
+			if(gameloop.isPoolPlayerFull()) {
+				//Setting parameters for next action
+				request.setAttribute("poolPlayerFull", true);
+				request.setAttribute("gameAction", "initGame");
+			} else {
+				//Setting parameters for next action
+				request.setAttribute("poolPlayerFull", false);
+				request.setAttribute("gameAction", "waitinit");
+			}
+			
+			request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+			break;
+			
+		case "initGame" :
+			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
+			
+			
+			break;
+			
+		case "waiturn" :
 			
 			break;
 			
