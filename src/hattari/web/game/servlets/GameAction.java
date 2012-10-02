@@ -31,7 +31,7 @@ public class GameAction extends HttpServlet {
 	
 	@EJB
 	private UserRepository userRep;
-	@EJB
+	@EJB(beanName="actionGame")
 	private ActionGameInterface actionGameRep;
        
     /**

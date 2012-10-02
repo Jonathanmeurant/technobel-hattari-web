@@ -132,14 +132,4 @@
     <servlet-name>StartNewGameServlet</servlet-name>
     <url-pattern>/StartNewGame</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestGame</display-name>
-    <servlet-name>TestGame</servlet-name>
-    <servlet-class>hattari.web.servlets.TestGame</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestGame</servlet-name>
-    <url-pattern>/TestGame</url-pattern>
-  </servlet-mapping>
 </web-app>
