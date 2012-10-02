@@ -1,7 +1,7 @@
 $(function() {
-	for(var i=1;i<5;i++){
-		for(var j=1;j<6;j++){
-			$( "#pj"+i+"pion"+j ).draggable();
-		}
-	}	
+	$("#pj1pion1").draggable();
+	$("#pj1pion2").draggable();
+	$("#pj1pion3").draggable();
+	$("#pj1pion4").draggable();
+	$("#pj1pion5").draggable();
 });
