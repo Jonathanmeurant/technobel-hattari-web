@@ -44,27 +44,31 @@
 			
 			<tr><td class='label'>E-mail :</td>
 			<td><input type="text" name="email" value="<%=loggedUser!=null?loggedUser.getEmail():"" %>" size="10" required></td></tr>
-
+			
  			<tr>
  				<td>Avatar :</td>
 				<td class='label'>
-					<input type="radio" name="image" value="/images/andre.jpg" /> <img src="<%=request.getContextPath() %>/images/andre.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/fred.jpg" /> <img src="<%=request.getContextPath() %>/images/fred.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/jess.jpg" /> <img src="<%=request.getContextPath() %>/images/jess.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/johna.jpg" /> <img src="<%=request.getContextPath() %>/images/johna.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/johnm.jpg" /> <img src="<%=request.getContextPath() %>/images/johnm.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/xavier.jpg" /> <img src="<%=request.getContextPath() %>/images/xavier.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/andre.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/andre.jpg" /> <img src="<%=request.getContextPath() %>/images/andre.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/fred.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/fred.jpg" /> <img src="<%=request.getContextPath() %>/images/fred.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/jess.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/jess.jpg" /> <img src="<%=request.getContextPath() %>/images/jess.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/johna.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/johna.jpg" /> <img src="<%=request.getContextPath() %>/images/johna.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/johnm.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/johnm.jpg" /> <img src="<%=request.getContextPath() %>/images/johnm.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/xavier.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/xavier.jpg" /> <img src="<%=request.getContextPath() %>/images/xavier.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
-					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
-					<input type="radio" checked="true" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio"  name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/imgavabase.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 				</td>			 	
 			</tr>
 			<tr>
 				<td class='label' ><input class="css3button"type="submit" value="Send" /></td>
 			</tr> 
-
+			<% if (loggedUser!=null) {%>
+			<tr>
+				<td class='label' ><input class="css3button"type="button" value="Return" ONCLICK="history.go(-1)" /></td>
+			</tr> 
+			<%} %>
 			</table>
 			</form>
 		</div>

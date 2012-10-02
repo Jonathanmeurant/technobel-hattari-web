@@ -39,7 +39,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 		<TD><a href="accueil.jsp">Accueil</a></TD>
 		<TD><a href="register.jsp">Mon compte</a></TD>
 	<TD><a href="score.jsp">Score</a></TD>
-	<TD><a href="index.jsp?">Déconection</a></TD>
+	<TD><a href="<%=request.getContextPath() %>/Logout">Logout</a></TD>
 		
 	<td><ul id="nav">
       <li><a href="#">jouer</a>

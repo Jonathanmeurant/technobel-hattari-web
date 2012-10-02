@@ -1,13 +1,24 @@
+*{
+padding:0;
+margin:0;
+}
+
+
+.total{
+position: relative;
+background-color:black;}
 .generale
 {
-	background-color : red;
+background-image: url("../images/Cem.jpg");
+background-image: no-repeat;
 	height : 900px;
-	width : 100%;
-	margin : auto;
+	width : 1599px;
+position : absolute;
+border-radius : 12px;
 }
 .joueursgauche
 {
-	background-color : green;
+	
 	float: left;
 	width: 14%;
 	height : 800px;
@@ -30,19 +41,18 @@
 
 .plateau
 {
-	border: 1px blue dashed;
 	width : 60%;
 	height : 800px;
 	float: left;
 	margin : auto;
-	
-	
+		
 }
 	.plateau1{
+		background-image: url("../images/plateau2.jpg");
 		margin-top : 50px;
-		background-color : white;
 		height : 700px;
 		position: relative;
+		border-radius : 12px;
 		}
 			.pjoueur1{
 			position: absolute;
@@ -75,7 +85,7 @@
 		}
 .joueursdroite
 {
-	background-color : yellow;
+	
 	width: 14%;
 	float: left;
 	height : 800px;
