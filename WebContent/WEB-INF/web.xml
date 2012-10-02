@@ -44,7 +44,6 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/Login</url-pattern>
   </servlet-mapping>
-
   <filter>
     <display-name>HattariFilter</display-name>
     <filter-name>HattariFilter</filter-name>
@@ -63,7 +62,6 @@
     <filter-name>OpenEntityManagerInViewFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
   <servlet>
     <description></description>
     <display-name>InitGame</display-name>
@@ -124,7 +122,7 @@
     <servlet-name>GameAction</servlet-name>
     <url-pattern>/gameaction</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>StartNewGameServlet</display-name>
     <servlet-name>StartNewGameServlet</servlet-name>
@@ -133,5 +131,15 @@
   <servlet-mapping>
     <servlet-name>StartNewGameServlet</servlet-name>
     <url-pattern>/StartNewGame</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestGame</display-name>
+    <servlet-name>TestGame</servlet-name>
+    <servlet-class>hattari.web.servlets.TestGame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestGame</servlet-name>
+    <url-pattern>/TestGame</url-pattern>
   </servlet-mapping>
 </web-app>
