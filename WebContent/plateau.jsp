@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
+  <script type="text/javascript" src="plateauScript.js"></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
 	<section class="joueursgauche"> 
 		<div class="pj1">
 			<img id="joueur1" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
-			<input type="submit" value="Jouer"/></br></br>
+			<input type="submit" value="Jouer"/><br/><br/>
 			<img id="cartejoueur1" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
 		</div>
 		
