@@ -28,14 +28,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-//		try {
-//			InitialContext context = new InitialContext();
-//
-//			userServices = (UserServices) context
-//					.lookup("HattariEAR/UserServices/local");
-//		} catch (NamingException ex) {
-//			ex.printStackTrace();
-//		}
+
 		String error = null;
 		loggedUser = userManager.login(username,password);
 		
