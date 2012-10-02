@@ -1,156 +1,120 @@
-* {
-	margin: 0px;
-	padding: 0px;
+body{
+background-image: url("gradient.jpg");
+background-repeat: repeat-x;
+background-color :#753f0a;
+
+
+}
+
+header{
+text-align: center;
+
+}
+.generale{ background-image: url("chateau06.jpg");
+-webkit-border-radius: 12px;
+border-radius: 12px;
+height : 900px;
+}
+#nav{
+font-family : MV Boli;
+}
+input{
+font-family : MV Boli;
+}
+ul{
+    list-style-type: none;
+	margin : 5px;
+	display : inline;
+	}
+li {
+margin: 1px;
+margin-bottom : 10 px;
+padding : 5px;
+display:inline;
+font-family : MV Boli;
+font-size: 20px;
+}
+#nav a{
+color : #c3aa89;
+
+
+}
+a:visited{
+color : #c3aa89;
+}
+
+h1{color: #dacab6;
+	text-align:center;
+	font-family: MV Boli;
+	text-align : center;}
 	
+
+
+.text-regle{color:red;
+	text-align:center;}
+	
+p{
+background-image : url("gradient2.jpg");
+background-repeat: repeat-x;
+background-color :#715335;
+-webkit-border-radius: 12px;
+    border-radius: 12px;
+	opacity : 0,3;
+width: 700px; /* On a indiqué une largeur (obligatoire) */
+margin: auto; /* On peut donc demander à ce que le bloc soit
+centré avec auto */
+border: 1px solid black;
+height: 500px;
+text-align: justify;
+padding: 12px;
+margin-bottom: 20px;
+overflow: auto;
+font-family : MV Boli;
 }
 
-body {
-	background: #eeeeee;
-	font-family: Calibri, Arial, Verdana;
-	font-size: 14px;
+.corps{
+text-align: justify;
+margin: 15px;
+padding : 25px;
+}
+.inscription
+{
+font-family : MV Boli;
+color : #c3aa89;
+margin : 10px;
+text-align : justify;
 }
 
-h1 {
-	margin: 30px;
-	padding: 10px;
+
+#container {
 }
 
-nav {
-	display: block;
+#nav, #nav ul {
+   padding: 0;
+   margin: 0;
+   list-style: none;
 }
 
-nav#loginBar {
-	position: absolute;
-	margin: 30px;
-	padding: 10px;
-	width: 1200px;
-	height: 41px;
-	border-radius: 10px;
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 7%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(7%,#4096ee), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 7%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
+#nav a {
+   display: block;
+   width: 10em;
 }
 
-ul.logged > li {
-	display: inline-block;
-	float: right;
+#nav li {
+   float: left;
+   width: 10em;
 }
 
-ul.login > li {
-	display: inline-block;
-	float: right;
+#nav li ul {
+   position: absolute;
+   width: 10em;
+   left: -999em;
 }
 
-ul.login > li > a {
-	padding: 15px;
-	vertical-align: sub;
-	text-decoration: none;
+#nav li:hover ul {
+   left: auto;
 }
 
-ul.login > li > a:visited {
-	padding: 15px;
-	vertical-align: sub;
-	color: #663366;
-	text-decoration: underline;
-}
-
-ul.register > li {
-	display: inline-block;
-	float: right;
-}
-
-ul.register > li > a {
-	padding: 15px;
-	vertical-align: sub;
-	text-decoration: none;
-}
-
-ul.register > li > a:visited {
-	padding: 15px;
-	vertical-align: sub;
-	color: #663366;
-	text-decoration: underline;
-}
-
-nav#javaForums {
-	position: relative;
-	top: 100px;
-	width: 1200px;
-	height: 41 px;
-	margin: 30px;
-	padding: 10px;
-	width: 1200px;
-	height: 41px;
-	border-radius: 10px;
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 7%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(7%,#4096ee), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 7%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
-}
-
-nav#cForums {
-	position: relative;
-	top: 100px;
-	width: 1200px;
-	height: 41 px;
-	margin: 30px;
-	padding: 10px;
-	width: 1200px;
-	height: 41px;
-	border-radius: 10px;
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 7%, #7abcff 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(7%,#4096ee), color-stop(100%,#7abcff)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 7%,#7abcff 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 7%,#7abcff 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#7abcff',GradientType=0 ); /* IE6-9 */
-}
-
-ul.topiclist > li {
-	list-style-type: none;
-	color: white; 
-}
-
-ul.topiclist > li > dl > dd  {
-	display: inline-block;
-}
-
-dl.icon dd.dterm {
-	padding-left: 5px;
-	padding-right: 5px;
-	width: 60%;
-}
-
-dl.icon dd.topics {
-	padding-left: 5px;
-	padding-right: 5px;
-	width: 18%;
-}
-
-dl.icon dd.posts {
-	padding-left: 5px;
-	padding-right: 5px;
-	width: 18%;
-}
-
-ul.topiclist dd {
-	float: left;
-	display: block;
-	padding: 14px 0;
-}
-
-nav.form {
-	position: relative;
-	top: 80px;
-}
+#nav li:hover ul, #nav li.sfhover ul {
+   left: auto;
+} 

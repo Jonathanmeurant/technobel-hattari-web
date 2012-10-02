@@ -13,7 +13,7 @@ public class IndexServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("index.jsp");
+		doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class IndexServlet extends HttpServlet {
 		if(loggedUser!=null) {
 			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
 		} else {
-			doGet(request,response);
+			response.sendRedirect("index.jsp");
 		}
 	}
 
