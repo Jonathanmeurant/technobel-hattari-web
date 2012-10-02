@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@page import="be.technobel.domain.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
 	
 </head>
 <body>
+<% User loggedUser = (User)request.getAttribute("loggedUser"); %>
 <div class="generale">
 <header>
 		<img src="<%=request.getContextPath() %>/images/hattari.png">
@@ -26,22 +28,22 @@
 			<tr><th>INSCRIPTION</th></tr>
 			 
 			<tr><td class='label'>Username :</td>
-			<td><input type="text" name="username" value=""|"" size="10" autofocus required></td></tr>
+			<td><input type="text" name="username" value="<%=loggedUser!=null?loggedUser.getUsername():"" %>" size="10" autofocus required></td></tr>
 
 			<tr><td class='label'>Password :</td>
-			<td><input type="password" id="password" name="password" value="" required></td></tr>
+			<td><input type="password" id="password" name="password" value="<%=loggedUser!=null?loggedUser.getPassword():"" %>" required></td></tr>
 			
 			<tr><td class='label'>Verify Password : </td>
-			<td><input type="password" name="checkPassword" value="" required></td></tr>
+			<td><input type="password" name="checkPassword" value="<%=loggedUser!=null?loggedUser.getPassword():"" %>" required></td></tr>
 
 			<tr><td class='label'>Firstname :</td>
-			<td><input type="text" name="firstname" size="10" required></td></tr>
+			<td><input type="text" name="firstname" value="<%=loggedUser!=null?loggedUser.getFirstName():"" %>" size="10" required></td></tr>
 
 			<tr><td class='label'>Lastname :</td>
-			<td><input type="text" name="lastname" size="10" required></td></tr>
+			<td><input type="text" name="lastname" value="<%=loggedUser!=null?loggedUser.getLastName():"" %>" size="10" required></td></tr>
 			
 			<tr><td class='label'>E-mail :</td>
-			<td><input type="text" name="email" size="10" required></td></tr>
+			<td><input type="text" name="email" value="<%=loggedUser!=null?loggedUser.getEmail():"" %>" size="10" required></td></tr>
 
  			<tr>
  				<td>Avatar :</td>

@@ -1,0 +1,100 @@
+.generale
+{
+	background-color : red;
+	height : 900px;
+	width : 100%;
+	margin : auto;
+}
+.joueursgauche
+{
+	background-color : green;
+	float: left;
+	width: 14%;
+	height : 800px;
+	margin : 15px;
+	text-align : center;
+	position : relative;
+	}
+		.pj1 {
+		width : 100%;
+		margin : auto;
+
+		}
+
+		.pj2 {
+		width : 100%;
+		margin: auto;
+		position: absolute;
+		bottom: 0;
+		}
+
+.plateau
+{
+	border: 1px blue dashed;
+	width : 60%;
+	height : 800px;
+	float: left;
+	margin : auto;
+	
+	
+}
+	.plateau1{
+		margin-top : 50px;
+		background-color : white;
+		height : 700px;
+		position: relative;
+		}
+			.pjoueur1{
+			position: absolute;
+			left: 10px;
+			top : 10px;
+			}
+			.pjoueur2{
+			position: absolute;
+			left: 10px;
+			bottom : 10px;
+			}
+			.pjoueur3{
+			position: absolute;
+			right: 10px;
+			top : 10px;
+			text-align: right;
+			}
+			.pjoueur4{
+			position: absolute;
+			right: 10px;
+			bottom : 10px;
+			text-align: right;
+			}
+		.cartes{
+		position: absolute ;
+		right : 25%;
+		top: 20%;
+		text-align: center;
+		
+		}
+.joueursdroite
+{
+	background-color : yellow;
+	width: 14%;
+	float: left;
+	height : 800px;
+	margin : 15px;
+	text-align : center;
+		position : relative;
+}
+		.pj3 {
+		width : 100%;
+		margin : auto;
+
+		}
+
+		.pj4 {
+		width : 100%;
+		margin: auto;
+		position: absolute;
+		bottom: 0;
+		}
+	
+
+
