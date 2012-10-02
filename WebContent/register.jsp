@@ -16,7 +16,7 @@
 	
 </head>
 <body>
-<% User loggedUser = (User)request.getAttribute("loggedUser"); %>
+<% User loggedUser = (User)request.getSession().getAttribute("loggedUser"); %>
 <div class="generale">
 <header>
 		<img src="<%=request.getContextPath() %>/images/hattari.png">
@@ -28,7 +28,7 @@
 			<tr><th>INSCRIPTION</th></tr>
 			 
 			<tr><td class='label'>Username :</td>
-			<td><input type="text" name="username" value="<%=loggedUser!=null?loggedUser.getUsername():"" %>" size="10" autofocus required></td></tr>
+			<td><input type="text" name="username" value="<%=loggedUser!=null?loggedUser.getUsername():"" %>" <% if (loggedUser!=null){%>disabled<%} %> autofocus required></td></tr>
 
 			<tr><td class='label'>Password :</td>
 			<td><input type="password" id="password" name="password" value="<%=loggedUser!=null?loggedUser.getPassword():"" %>" required></td></tr>
@@ -67,7 +67,7 @@
 
 			</table>
 			</form>
-		<div>
+		</div>
 </div>
 </body>
 </html>

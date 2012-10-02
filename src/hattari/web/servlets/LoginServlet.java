@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import be.technobel.domain.entity.User;
-import be.technobel.services.UserManager;
+import be.technobel.services.interfaces.UserManager;
 
 
 public class LoginServlet extends HttpServlet {

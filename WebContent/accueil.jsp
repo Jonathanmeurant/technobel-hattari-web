@@ -1,3 +1,4 @@
+<%@page import="be.technobel.domain.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 </head>
 <body>
-
+<% User loggedUser = (User)request.getSession().getAttribute("loggedUser"); %>
  <div class="generale">
 	
 		<header>
@@ -48,6 +49,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
             <li><a href="#nogo">4 joueurs</a></li>
          </ul>
       </li>
+      <li>Bonjour <%=loggedUser.getUsername() %></li>
    </ul></td></TR>
 </table>	
 
