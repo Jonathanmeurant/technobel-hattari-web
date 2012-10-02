@@ -5,17 +5,17 @@ $(function(){
 function validate(){
 	 $("#annonce").validate({
 		rules: {
-			nom: {
+			username: {
 				required: true,
 			},
-			passe: {
+			password: {
 				required: true,
 			},
-			passeverif: {
+			checkPassword: {
 				required: true,
-				equalTo: "#passe"
+				equalTo: "#password"
 			},
-			mail: {
+			email: {
 				required: true,
 				 email: true
 			}

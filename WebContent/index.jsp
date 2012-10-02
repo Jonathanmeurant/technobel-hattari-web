@@ -13,17 +13,16 @@
 <body>
 <div class="generale">
 <header>
-		<img src=".images/hattari.png">
+		<img src="<%=request.getContextPath() %>/images/hattari.png">
 </header>
 	
 <nav>
 	<nav class="form">
 		<form action="<%=request.getContextPath() %>/Login" method="post">
 			<fieldset id="login">
-				<legend>Login</legend>
-				<p><label>Username :</label><input type="text" name="username" autofocus required/></p>
-				<p><label>Password :</label><input type="password" name="password" required /></p>
-				<p><input type="submit" value="Connect"/>
+				<p><label>Username :</label><input type="text" name="username" autofocus required/>
+				<label>Password :</label><input type="password" name="password" required />
+				<input type="submit" value="Connect"/></p>
 			</fieldset>
 		</form>
 	</nav>
@@ -35,7 +34,7 @@
 		<div class="corps">
 			<h1>Règles du jeu</h1>
 			
-			<p>
+			<p class="text">
 			<a href="reglehattari.pdf" target="_blank">Règles complètes en pdf</a><br/>
 			<b>Contexte :</b><br/>
 				Démasquerez-vous le coupable ?

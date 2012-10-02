@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("register.jsp");
+		doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
+		String image = request.getParameter("image");
 		
 		Validation validation = new Validation();
 		
@@ -39,28 +40,41 @@ public class RegisterServlet extends HttpServlet {
 		boolean lastnameTest = validation.textValidation(lastname);
 		boolean emailTest = validation.emailValidation(email);
 		
+		System.out.println(usernameTest);
+		System.out.println(passwordTest);
+		System.out.println(firstnameTest);
+		System.out.println(lastnameTest);
+		System.out.println(emailTest);
+		
 		if (!usernameTest) {
+			System.out.println("________________ ERROR 1__________________");
 			request.setAttribute("error", "invalid username");
 			response.sendRedirect("register.jsp");
 		} else if (!passwordTest) {
+			System.out.println("________________ ERROR 2_________________");
 			request.setAttribute("error", "invalid password");
 			response.sendRedirect("register.jsp");
 		} else if (!firstnameTest) {
+			System.out.println("________________ ERROR 3__________________");
 			request.setAttribute("error", "invalid firstname");
 			response.sendRedirect("register.jsp");
 		} else if (!lastnameTest) {
+			System.out.println("________________ ERROR 4__________________");
 			request.setAttribute("error", "invalid lastname");
 			response.sendRedirect("register.jsp");
 		} else if (!emailTest) {
+			System.out.println("________________ ERROR 5__________________");
 			request.setAttribute("error", "invalid email");
 			response.sendRedirect("register.jsp");
 		} 
 
 		User user = new User(username, password, firstname, lastname, email);
+		user.setAvatar(image);
 		userRepository.save(user);
 		
+		System.out.println("END SAVE");
 		
-		request.getRequestDispatcher("/index.jsp").forward(request,response);
+		request.getRequestDispatcher("/Index").forward(request,response);
 	}
 
 

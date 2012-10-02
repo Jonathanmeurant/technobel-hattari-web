@@ -10,7 +10,7 @@ header{
 text-align: center;
 
 }
-.generale{ background-image: url("chateau06.jpg");
+.generale{ background-image: url("../images/chateau06.jpg");
 -webkit-border-radius: 12px;
 border-radius: 12px;
 height : 900px;
@@ -52,8 +52,17 @@ h1{color: #dacab6;
 
 .text-regle{color:red;
 	text-align:center;}
-	
-p{
+
+fieldset{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+p.text{
 background-image : url("gradient2.jpg");
 background-repeat: repeat-x;
 background-color :#715335;

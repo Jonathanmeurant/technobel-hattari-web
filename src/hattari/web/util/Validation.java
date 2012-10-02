@@ -11,11 +11,7 @@ public class Validation {
 	
 	public boolean textValidation (String text) {
 		
-		Pattern p = Pattern.compile("/w");
-		
-		Matcher m = p.matcher(text);
-		
-		boolean matchFound = m.matches();
+		boolean matchFound = Pattern.matches("\\w+", text);
 		
 		if (matchFound) {
 			return true;
@@ -39,7 +35,7 @@ public class Validation {
 	
 	public boolean integerValidation (String textInteger) {
 		
-		Pattern p = Pattern.compile("/d");
+		Pattern p = Pattern.compile("\\d+");
 		
 		Matcher m = p.matcher(textInteger);	
 		

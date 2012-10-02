@@ -17,47 +17,51 @@
 <body>
 <div class="generale">
 <header>
-		<img src="./hattari.png">
+		<img src="<%=request.getContextPath() %>/images/hattari.png">
 </header>		
 		<div class="formregister">
 			<form id ="annonce"  action="<%=request.getContextPath() %>/Register" method="post" >	
 				
-			<TABLE class='inscription'>
+			<table class='inscription'>
 			<tr><th>INSCRIPTION</th></tr>
 			 
-			<TR><TD class='label' for="name">Username :<TD>
-			<input type="text" name="username" value="" size="10" autofocus required></TD></TR>
+			<tr><td class='label'>Username :</td>
+			<td><input type="text" name="username" value=""|"" size="10" autofocus required></td></tr>
 
-			<TR><TD class='label' for="password">Password :<TD>
-			<input type="password" name="password" value="" required></TD></TR>
+			<tr><td class='label'>Password :</td>
+			<td><input type="password" id="password" name="password" value="" required></td></tr>
 			
-			<TR><TD class='label' for="checkPassword" >Verify Password : <TD>
-			<input type="password" name="checkPassword" value="" required></TD></TR>
+			<tr><td class='label'>Verify Password : </td>
+			<td><input type="password" name="checkPassword" value="" required></td></tr>
 
-			<TR><TD class='label' for="firstname">Firstname :<TD>
-			<input type="text" name="firstname" size="10" required></TD></TR>
+			<tr><td class='label'>Firstname :</td>
+			<td><input type="text" name="firstname" size="10" required></td></tr>
 
-			<TR><TD class='label' for="lastname">Lastname :<TD>
-			<input type="text" name="lastname" size="10" required></TD></TR>
+			<tr><td class='label'>Lastname :</td>
+			<td><input type="text" name="lastname" size="10" required></td></tr>
 			
-			<TR><TD class='label' for="email">E-mail :<TD>
-			<input type="text" name="email" size="10" required></TD></TR>
+			<tr><td class='label'>E-mail :</td>
+			<td><input type="text" name="email" size="10" required></td></tr>
 
-			<TR><td>Avatar :</td>
-			<TD class='label'><input type="radio" name="imageava" value="nompj0"> <img src="./andre.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj1"> <img src="./images/fred.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj2"> <img src="./images/jess.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj3"> <img src="./images/johna.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj4"> <img src="./images/johnm.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj5"> <img src="./images/xavier.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj6"> <img src="./images/imgavabase.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj7"> <img src="./images/imgavabase.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj8"> <img src="./images/imgavabase.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj9"> <img src="./images/imgavabase.jpg" alt="nom">
-			<input type="radio" name="imageava" value="nompj10"> <img src="./images/imgavabase.jpg" alt="nom">
-		
-			  
-			<TR><TD class='label' ><input class="css3button"type="submit" value="Send"></TD></TR> 
+ 			<tr>
+ 				<td>Avatar :</td>
+				<td class='label'>
+					<input type="radio" name="image" value="/images/andre.jpg" /> <img src="<%=request.getContextPath() %>/images/andre.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/fred.jpg" /> <img src="<%=request.getContextPath() %>/images/fred.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/jess.jpg" /> <img src="<%=request.getContextPath() %>/images/jess.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/johna.jpg" /> <img src="<%=request.getContextPath() %>/images/johna.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/johnm.jpg" /> <img src="<%=request.getContextPath() %>/images/johnm.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/xavier.jpg" /> <img src="<%=request.getContextPath() %>/images/xavier.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
+				</td>			 	
+			</tr>
+			<tr>
+				<td class='label' ><input class="css3button"type="submit" value="Send" /></td>
+			</tr> 
 
 			</table>
 			</form>

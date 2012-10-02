@@ -29,7 +29,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
  <div class="generale">
 	
 		<header>
-		<img src="./hattari.png">
+		<img src="<%=request.getContextPath() %>/images/hattari.png">
 </header>
 		
 		
