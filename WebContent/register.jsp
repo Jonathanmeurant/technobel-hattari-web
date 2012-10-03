@@ -27,7 +27,7 @@
 				
 			<table class='inscription'>
 			
-			<tr><th>INSCRIPTION</th><% if (error != null){ %><td>Error : <%=error %>r</td><%} %></tr>
+			<tr><th>INSCRIPTION</th><% if (error != null){ %><td>Error : <%=error%></td><%} %></tr>
 			 
 			<tr><td class='label'>Username :</td>
 			<td><input type="text" name="username" value="<%=loggedUser!=null?loggedUser.getUsername():"" %>" <% if (loggedUser!=null){%>disabled<%} %> autofocus required></td></tr>
