@@ -17,6 +17,7 @@
 </head>
 <body>
 <% User loggedUser = (User)request.getSession().getAttribute("loggedUser"); %>
+<% String error = (String)request.getAttribute("error"); %>
 <div class="generale">
 <header>
 		<img src="<%=request.getContextPath() %>/images/hattari.png">
@@ -25,7 +26,8 @@
 			<form id ="annonce"  action="<%=request.getContextPath() %>/Register" method="post" >	
 				
 			<table class='inscription'>
-			<tr><th>INSCRIPTION</th></tr>
+			
+			<tr><th>INSCRIPTION</th><% if (error != null){ %><td>Error : <%=error %>r</td><%} %></tr>
 			 
 			<tr><td class='label'>Username :</td>
 			<td><input type="text" name="username" value="<%=loggedUser!=null?loggedUser.getUsername():"" %>" <% if (loggedUser!=null){%>disabled<%} %> autofocus required></td></tr>
