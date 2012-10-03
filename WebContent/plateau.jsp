@@ -1,6 +1,9 @@
 <!doctype html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@page import="be.technobel.domain.entity.User"%>
+
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -13,18 +16,22 @@
 <% User  otherLoggedUser3 = (User)request.getAttribute("otherLoggedUser3"); %>
 <% User  otherLoggedUser4 = (User)request.getAttribute("otherLoggedUser4"); %>
 <body>
-
+	
+	 
 <div class="total">
 <div class="generale">
 	<section class="joueursgauche"> 
 		<div class="pj1">
-			<img id="joueur1" src="<%=loggedUser!=null?request.getContextPath()+loggedUser.getAvatar():request.getContextPath()+"/images/imgavabase.jpg" %>" alt="nom"><br/>
+		
+			 <c:url value="${gameState.user.get(0).avatar}"  var="urlimageavatarj1"/>
+			<img id="joueur1" src="${urlimageavatarj1}" alt="nom"><br/>
 			<input type="submit" value="Jouer"/><br/><br/>
-			<img id="cartejoueur1" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
+			 <c:url value="${gameState.user.get(0).clue.image}"  var="urlimagecluej1"/>
+			<img id="cartejoueur1" src="${urlimagecluej1}" alt="carte du joueur"><br/>
 			<ul class="joueur">
 				<li class="icon">
 					<dl>
-						<dd class="joueur1"><%=loggedUser!=null?loggedUser.getUsername():"Player 1" %></dd>
+						<dd class="joueur1">${gameState.user.get(1).username} </dd>
 					</dl>
 				</li>
 			</ul>
@@ -32,13 +39,16 @@
 		
 	
 		<div class="pj2">
-			<img id="cartejoueur2" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
+			<c:url value="${gameState.user.get(1).clue.image}"  var="urlimagecluej2"/>
+			<img id="cartejoueur2" src="${urlimagecluej2}"><br/><br/>
 			<!-- <input type="submit" value="Jouer"/> --><br/>
-			<img id="joueur2" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
+			
+			<c:url value="${gameState.user.get(1).avatar}"  var="urlimageavatarj2"/>
+			<img id="joueur2" src="${urlimageavatarj2}" alt="nom"><br/>
 			<ul class="joueur">
 				<li class="icon">
 					<dl>
-						<dd class="joueur2"><%=otherLoggedUser2!=null?otherLoggedUser2.getUsername():"Player 2" %></dd>
+						<dd class="joueur2">${gameState.user.get(0).username}</dd>
 					</dl>
 				</li>
 			</ul>
@@ -48,38 +58,45 @@
 	<section class="plateau">
 	<div class="plateau1">
 		<div class="pjoueur1">
-		<img id="pj1pion1" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj1pion2" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/><br/>
-		<img id="pj1pion3" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj1pion4" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj1pion5" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
+		
+		<c:forEach  items="${gameState.user.get(0).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<img class="pj1pion1" src="${urlimagechip}" alt="nom"/>
+	 	 </c:forEach>
+		
 		</div>
 		<div class="pjoueur2">
-		<img id="pj2pion1" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj2pion2" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/><br/>
-		<img id="pj2pion3" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj2pion4" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj2pion5" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
+		<c:forEach  items="${gameState.user.get(1).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<img class="pj2pion1" src="${urlimagechip}" alt="nom"/>
+	 	 </c:forEach>
 		</div>
 		<div class="cartes">
-		<img id="victime" src="<%=request.getContextPath() %>/images/victime.jpg" alt="nom"/><br/>
-		<img id="suspect1" src="<%=request.getContextPath() %>/images/carte.jpg" alt="nom"/>
-		<img id="suspect2" src="<%=request.getContextPath() %>/images/carte.jpg" alt="nom"/>
-		<img id="suspect3" src="<%=request.getContextPath() %>/images/carte.jpg" alt="nom"/>
+		
+		 <c:url value="${gameState.victim.image}"  var="urlimagevic"/>
+		<img id="victime" src="${urlimagevic}" alt="nom"/>
+		
+		 <c:forEach  items="${gameState.suspects}"  var="suspect">
+		 	<c:url value="${suspect.image}"  var="urlimage"/>
+			<img class="suspect" src="${urlimage}" alt="nom"/>
+			<c:forEach  items="${suspect.lChips}"  var="chip">
+				<c:url value="${chip.imageRecto}"  var="urlimagechipCarte"/>
+		 		<img class="chipCarte" src="${urlimagechipCarte}" alt="nom"/>
+			</c:forEach>
+	 	 </c:forEach>
+	 	 
 		</div>
 		<div class="pjoueur3">
-		<img id="pj3pion1" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj3pion2" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/><br/>
-		<img id="pj3pion3" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj3pion4" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj3pion5" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
+		<c:forEach  items="${gameState.user.get(2).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<img class="pj3pion1" src="${urlimagechip}" alt="nom"/>
+	 	</c:forEach>
 		</div>
 		<div class="pjoueur4">
-		<img id="pj4pion1" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj4pion2" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/><br/>
-		<img id="pj4pion3" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj4pion4" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
-		<img id="pj4pion5" src="<%=request.getContextPath() %>/images/pionbase.png" alt="nom"/>
+		<c:forEach  items="${gameState.user.get(3).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<img class="pj4pion1" src="${urlimagechip}" alt="nom"/>
+	 	</c:forEach>
 		</div>
 	</div>
 	</section>
@@ -87,26 +104,32 @@
 	<section class="joueursdroite">
 	
 		<div class="pj3">
-			<img id="cartejoueur3" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
+			<c:url value="${gameState.user.get(2).clue.image}"  var="urlimagecluej3"/>
+			<img id="cartejoueur3" src="${urlimagecluej3}" alt="carte du joueur"><br/><br/>
 			<!-- <input type="submit" value="Jouer"/> --><br/>
-			<img id="joueur3" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
+			
+			<c:url value="${gameState.user.get(2).avatar}"  var="urlimageavatarj3"/>
+			<img id="joueur3" src="${urlimageavatarj3}" alt="nom"><br/>
 			<ul class="joueur">
 				<li class="icon">
 					<dl>
-						<dd class="joueur3"><%=otherLoggedUser3!=null?otherLoggedUser3.getUsername():"Player 3" %></dd>
+						<dd class="joueur3">${gameState.user.get(2).username} </dd>
 					</dl>
 				</li>
 			</ul>
 		</div>
 		
 		<div class="pj4">
-			<img id="joueur4" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
+			<c:url value="${gameState.user.get(3).avatar}"  var="urlimageavatarj4"/>
+			<img id="joueur4" src="${urlimageavatarj4}" alt="nom"><br/>
 			<!-- <input type="submit" value="Jouer"/> --><br/><br/>
-			<img id="cartejoueur4" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
+			
+			<c:url value="${gameState.user.get(3).clue.image}"  var="urlimagecluej4"/>
+			<img id="cartejoueur4" src="${urlimagecluej4}" alt="carte du joueur"><br/>
 			<ul class="joueur">
 				<li class="icon">
 					<dl>
-						<dd class="joueur4"><%=otherLoggedUser4!=null?otherLoggedUser4.getUsername():"Player 4" %></dd>
+						<dd class="joueur4">${gameState.user.get(3).username} </dd>
 					</dl>
 				</li>
 			</ul>

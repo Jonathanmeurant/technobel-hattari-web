@@ -50,14 +50,14 @@ public class TestGame extends HttpServlet {
                 out.println("<h1>+++++++++++++++++++++firstPlayer()+++++++++++++++++++++++++</h1>");
                 actionGame.firstPlayer(gameState.getSuspects().get(1));
                 gameState=actionGame.getGamestate();
-                out.println("<h1>+++++++++++++++++++++firstPlayer()+++++++++++++++++++++++++</h1>");
+                this.aff(out, users,gameState);
+                out.println("<h1>+++++++++++++++++++++accusation()+++++++++++++++++++++++++</h1>");
                 actionGame.accusation(gameState.getSuspects().get(2));
                 gameState=actionGame.getGamestate();
-                
-                this.aff(out, users,gameState);
-                
-                
-                
+                this.aff(out, users,gameState);   
+                request.setAttribute("gameState",gameState);
+                request.getRequestDispatcher("plateau.jsp").forward(request, response);
+              
                 
         }
 
@@ -92,6 +92,13 @@ public class TestGame extends HttpServlet {
            System.out.println("LastSelectedCharacter "+gameState.getLastSelectedCharacter());
            out.println("<h1>LastSelectedCharacter "+gameState.getLastSelectedCharacter()+"</h1>");
          
+           for (Character character:gameState.getSuspects()){
+        	   out.println("<h1>character :"+character.getNumber()+"</h1>");
+  
+        	   for (Chips chip:character.getlChips()){
+        		   out.println("<h1>chips :"+chip.getName()+""+chip.getReversed()+"</h1>");  
+        	   }
+           }
            
 		
        } 
