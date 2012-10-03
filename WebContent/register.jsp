@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
 	<title>Register</title>
 	
-    <script src="stylesheet" href="<%=request.getContextPath() %>/js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
     <script src="<%=request.getContextPath() %>/js/script.js"></script>
