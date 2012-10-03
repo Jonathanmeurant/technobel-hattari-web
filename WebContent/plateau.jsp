@@ -5,27 +5,26 @@
 <head>
   <meta charset="utf-8">
   <title>HATTARI</title>
-  <link rel="stylesheet" href="css/styleplateau.css">
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
 </head>
 
-<body>
-<% User loggedUser = (User)request.getSession().getAttribute("loggeduser"); %>
-<% User  otherLoggedUser1 = (User)request.getAttribute("otherLoggedUser1"); %>
+<% User loggedUser = (User)request.getSession().getAttribute("loggedUser");%>
 <% User  otherLoggedUser2 = (User)request.getAttribute("otherLoggedUser2"); %>
 <% User  otherLoggedUser3 = (User)request.getAttribute("otherLoggedUser3"); %>
+<% User  otherLoggedUser4 = (User)request.getAttribute("otherLoggedUser4"); %>
+<body>
 
 <div class="total">
 <div class="generale">
 	<section class="joueursgauche"> 
 		<div class="pj1">
-			<img id="joueur1" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
+			<img id="joueur1" src="<%=loggedUser!=null?request.getContextPath()+loggedUser.getAvatar():request.getContextPath()+"/images/imgavabase.jpg" %>" alt="nom"><br/>
 			<input type="submit" value="Jouer"/><br/><br/>
 			<img id="cartejoueur1" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
-			<ul>
-				<li>
+			<ul class="joueur">
+				<li class="icon">
 					<dl>
-						<dd>
-						</dd>
+						<dd class="joueur1"><%=loggedUser!=null?loggedUser.getUsername():"Player 1" %></dd>
 					</dl>
 				</li>
 			</ul>
@@ -36,7 +35,13 @@
 			<img id="cartejoueur2" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
 			<!-- <input type="submit" value="Jouer"/> --><br/>
 			<img id="joueur2" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
-			
+			<ul class="joueur">
+				<li class="icon">
+					<dl>
+						<dd class="joueur2"><%=otherLoggedUser2!=null?otherLoggedUser2.getUsername():"Player 2" %></dd>
+					</dl>
+				</li>
+			</ul>
 		</div>
 	</section>
 	
@@ -80,26 +85,36 @@
 	</section>
 	
 	<section class="joueursdroite">
+	
 		<div class="pj3">
+			<img id="cartejoueur3" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
+			<!-- <input type="submit" value="Jouer"/> --><br/>
 			<img id="joueur3" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
-			<!-- <input type="submit" value="Jouer"/> --><br/><br/>
-			<img id="cartejoueur3" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
+			<ul class="joueur">
+				<li class="icon">
+					<dl>
+						<dd class="joueur3"><%=otherLoggedUser3!=null?otherLoggedUser3.getUsername():"Player 3" %></dd>
+					</dl>
+				</li>
+			</ul>
 		</div>
 		
-	
 		<div class="pj4">
-			<img id="cartejoueur4" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
-			<!-- <input type="submit" value="Jouer"/> --><br/>
 			<img id="joueur4" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
-			
+			<!-- <input type="submit" value="Jouer"/> --><br/><br/>
+			<img id="cartejoueur4" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
+			<ul class="joueur">
+				<li class="icon">
+					<dl>
+						<dd class="joueur4"><%=otherLoggedUser4!=null?otherLoggedUser4.getUsername():"Player 4" %></dd>
+					</dl>
+				</li>
+			</ul>
 		</div>
+			
 	</section>
 
 </div>
 </div>
 </body>
 </html>
-
-
-
-
