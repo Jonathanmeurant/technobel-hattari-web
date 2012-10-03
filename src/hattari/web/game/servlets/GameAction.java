@@ -85,7 +85,7 @@ public class GameAction extends HttpServlet {
 		userIP = request.getRemoteAddr();
 		
 		switch (gameAction) {
-		case "login":				
+		case "joinGame":				
 				//Récupérer le nombre de joueurs dans la partie.
 				int nbrPlayer = gameloop.getNbrPlayer();
 				
