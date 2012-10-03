@@ -24,14 +24,19 @@ public class testJoinGame extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String username = request.getParameter("username");
+		
+		request.getSession().setAttribute("username", username);
+		request.setAttribute("gameAction", "joinGame");
+		
+		request.getRequestDispatcher("gameaction").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 	}
 
 }
