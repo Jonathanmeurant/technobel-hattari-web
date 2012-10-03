@@ -29,6 +29,7 @@ public class GameAction extends HttpServlet {
 	GameLoop gameloop;
 	String gameAction;
 	String username;
+	User userLogged;
 	User user;
 	String userIP;
 	GameState gameState;
@@ -80,7 +81,8 @@ public class GameAction extends HttpServlet {
 		}
 
 		// Récupérer le username passé en session
-		username = (String) request.getSession().getAttribute("username");
+		userLogged = (User) request.getSession().getAttribute("loggedUser");
+		username = userLogged.getUsername();
 
 		// Récupérer le User de la DB.
 		user = userRep.findByUsername(username);

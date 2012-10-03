@@ -36,6 +36,7 @@ public class testJoinGame extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Return error 405 - Method Not allowed
 		response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 	}
 
