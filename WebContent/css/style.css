@@ -1,8 +1,12 @@
-body{
+*{
+	margin: 0px;
+	padding: 0px;
+}
+}body{
 background-image: url("gradient.jpg");
 background-repeat: repeat-x;
 background-color :#753f0a;
-
+color:white;
 
 }
 
@@ -54,12 +58,7 @@ h1{color: #dacab6;
 	text-align:center;}
 
 fieldset{
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-ms-border-radius: 10px;
-	-o-border-radius: 10px;
-	border-radius: 10px;
-	padding: 10px;
+	border:none;
 }
 
 p.text{
@@ -126,4 +125,13 @@ text-align : justify;
 
 #nav li:hover ul, #nav li.sfhover ul {
    left: auto;
-} 
+}
+
+label{color:white;}
+
+.error{ font-size:160%;
+	color:red;
+}
+
+.register{float:right;
+}

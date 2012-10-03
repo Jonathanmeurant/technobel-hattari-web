@@ -11,6 +11,7 @@
   	<script src="<%=request.getContextPath() %>/js/script.js"></script>
 </head>
 <body>
+<% String error = (String)request.getAttribute("error"); %>
 <div class="generale">
 <header>
 		<img src="<%=request.getContextPath() %>/images/hattari.png">
@@ -23,11 +24,14 @@
 				<p><label>Username :</label><input type="text" name="username" autofocus required/>
 				<label>Password :</label><input type="password" name="password" required />
 				<input type="submit" value="Connect"/></p>
+				<% if (error != null){ %> <p class="error">Error : <%=error%></p> <%} %>
+				
 			</fieldset>
+			
 		</form>
 	</nav>
 	<nav>
-		<a href="register.jsp">Register</a></li>
+		<a class="register" href="register.jsp">Register</a></li>
 	</nav>
 </nav>
 	<section>
