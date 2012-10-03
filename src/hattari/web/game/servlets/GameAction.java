@@ -16,6 +16,7 @@ import be.technobel.domain.datamodel.GameState;
 import be.technobel.domain.entity.User;
 import be.technobel.domain.repository.interfaces.user.UserRepository;
 import be.technobel.services.interfaces.ActionGameInterface;
+import be.technobel.domain.entity.Character;
 
 /**
  * Servlet implementation class GameAction
@@ -27,10 +28,14 @@ public class GameAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	GameLoop gameloop;
+	String gameAction;
 	String username;
 	User user;
 	String userIP;
 	GameState gameState;
+	Character character;
+	Character suspect;
+	int currentPlayer;
 	
 	int i; //un compteur quelconque...
 	
@@ -65,23 +70,28 @@ public class GameAction extends HttpServlet {
 			gameloop = new GameLoop();
 		}
 		
-		String gameAction = request.getParameter("gameAction");
+		gameAction = request.getParameter("gameAction");
+		//si game Action n'est pas passé en Param, il est passé en Attribut.
+		if(gameAction == null) {
+			gameAction = (String) request.getAttribute("gameAction");
+		}
+		
+		//Récupérer le username passé en session
+		username = (String) request.getSession().getAttribute("username");
+
+		
+		//Récupérer le User de la DB.
+		user = userRep.findByUsername(username);
+		userIP = request.getRemoteAddr();
 		
 		switch (gameAction) {
-		case "login":
-				//Récupérer le username passé en parametre
-				username = request.getParameter("username");
-				
+		case "login":				
 				//Récupérer le nombre de joueurs dans la partie.
 				int nbrPlayer = gameloop.getNbrPlayer();
 				
 				
 				if(nbrPlayer < gameloop.getNbrMaxPlayer()) {
-					//Le nombre Max de joueurs n'est pas atteint,
-					
-					//Récupérer le User de la DB.
-					user = userRep.findByUsername(username);
-					userIP = request.getRemoteAddr();
+					//Le nombre Max de joueurs n'est pas atteint
 					
 					//Vérifier si le user est déjà dans la Liste
 					if(!gameloop.isUserInList(userIP)) {
@@ -120,10 +130,11 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("gameState", null);
 				request.setAttribute("gameInitialized", false);
 				request.setAttribute("isTurnClue", false);
+				request.setAttribute("isOnFirstPlay", false);
 				request.setAttribute("gameAction", "waitinit");
 				getServletContext().setAttribute("gameloop", gameloop);
 				
-				request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+				request.getRequestDispatcher("plateau.jsp").forward(request, response);
 			break;
 			
 		case "waitinit" :
@@ -136,6 +147,7 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("gameState", null);
 				request.setAttribute("gameInitialized", false);
 				request.setAttribute("isTurnClue", false);
+				request.setAttribute("isOnFirstPlay", false);
 			} else {
 				//Setting parameters for next action
 				request.setAttribute("poolPlayerFull", false);
@@ -143,11 +155,12 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("gameState", null);
 				request.setAttribute("gameInitialized", false);
 				request.setAttribute("isTurnClue", false);
+				request.setAttribute("isOnFirstPlay", false);
 			}
 			
 			getServletContext().setAttribute("gameloop", gameloop);
 			
-			request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
 			break;
 			
 		case "initGame" :
@@ -174,22 +187,16 @@ public class GameAction extends HttpServlet {
 			request.setAttribute("gameState", gameState);
 			request.setAttribute("gameInitialized", true);
 			request.setAttribute("isTurnClue", false);
+			request.setAttribute("isOnFirstPlay", false);
 			request.setAttribute("gameAction", "waitturn");
 			
 			getServletContext().setAttribute("gameloop", gameloop);
 			
-			request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
 			break;
 			
 		case "waitturn" :
 			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
-			
-			//Récupérer le username passé en parametre
-			username = request.getParameter("username");
-			
-			//Récupérer le User de la DB.
-			user = userRep.findByUsername(username);
-			userIP = request.getRemoteAddr();
 			
 			int nbrWaitToTurnClue = gameloop.getNbrWaitToTurnClue();
 			
@@ -203,7 +210,7 @@ public class GameAction extends HttpServlet {
 					
 					if(nbrWaitToTurnClue == gameloop.getNbrMaxPlayer()) {
 						//Tous les joueurs sont en attente !
-						request.setAttribute("gameAction", "turnclue");
+						request.setAttribute("gameAction", "turnClue");
 					} else {
 						//tous ne sont pas encore en attente
 						request.setAttribute("gameAction", "waitturn");
@@ -214,7 +221,7 @@ public class GameAction extends HttpServlet {
 				}
 			} else {
 				//Tous les joureurs sont en attente !
-				request.setAttribute("gameAction", "turnclue");
+				request.setAttribute("gameAction", "turnClue");
 			}
 			
 			//récupération du GameState
@@ -225,9 +232,10 @@ public class GameAction extends HttpServlet {
 			request.setAttribute("gameState", gameState);
 			request.setAttribute("gameInitialized", true);
 			request.setAttribute("isTurnClue", false);
+			request.setAttribute("isOnFirstPlay", false);
 			
 			getServletContext().setAttribute("gameloop", gameloop);
-			request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
 			break;
 			
 		case "turnClue":
@@ -243,25 +251,126 @@ public class GameAction extends HttpServlet {
 			//récupération du GameState
 			gameState = actionGameRep.getGamestate();
 			
+			//initialisation du Premier Joeur.
+			currentPlayer = 1;
+			gameloop.setCurrentPlayer(currentPlayer);
+			
 			//Setting parameters for next action
 			request.setAttribute("poolPlayerFull", true);
 			request.setAttribute("gameState", gameState);
 			request.setAttribute("gameInitialized", true);
 			request.setAttribute("isTurnClue", true);
-			request.setAttribute("gameAction", "firstPlayer");
+			request.setAttribute("isOnFirstPlay", false);
+			request.setAttribute("gameAction", "firstPlay");
+			request.setAttribute("currentPlayer", currentPlayer);
+			request.setAttribute("currentPlayerIP", gameloop.getConnectedUsers().get(currentPlayer).getUserIP());
 			
 			getServletContext().setAttribute("gameloop", gameloop);
 			
-			request.getRequestDispatcher("waitingtostartgame.jsp").forward(request, response);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
+			break;
+		
+		case "waitEndTurnClue" :
+			//TODO : when all players has clicked they have view the "witness"
 			break;
 			
 		case "firstPlay":
+			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
 			
+			//Récupération du current player
+			currentPlayer = gameloop.getCurrentPlayer();
+			
+			gameState = actionGameRep.getGamestate();
+					
+			//Vérification du current player en fonction de l'adresse IP
+			if(userIP.equals(gameloop.getConnectedUsers().get(currentPlayer).getUserIP())) {
+				if(!gameloop.isOnFirstPlayer()) {
+					//La Methode FirstPlayer n'as pas été invoquée
+					
+					//récupérer le "character"
+					character = (Character) request.getAttribute("character");
+					
+					//Déclarer le Joueur
+					gameState.setCurrentPlayer(currentPlayer);
+					
+					//Invocation de la méthode
+					actionGameRep.firstPlayer(character);
+					
+					gameloop.setOnFirstPlayer(true);
+					
+					request.setAttribute("gameAction", "accuse");
+				} else {
+					request.setAttribute("gameAction", "accuse");
+				}
+			} else {
+				request.setAttribute("gameAction", "firstPlay");
+			}
+			
+			gameState = actionGameRep.getGamestate();
+			
+			//TODO : Non firstPlayer pass to accusation
+			
+			//Setting parameters for next action
+			request.setAttribute("poolPlayerFull", true);
+			request.setAttribute("gameState", gameState);
+			request.setAttribute("gameInitialized", true);
+			request.setAttribute("isTurnClue", true);
+			request.setAttribute("isOnFirstPlay", true);
+			
+			request.setAttribute("currentPlayer", currentPlayer);
+			request.setAttribute("currentPlayerIP", gameloop.getConnectedUsers().get(currentPlayer).getUserIP());
+			
+			getServletContext().setAttribute("gameloop", gameloop);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
 			break;
 			
 		case "accuse":
+			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
 			
-			break;	
+			//Récupération du current player
+			currentPlayer = gameloop.getCurrentPlayer();
+			
+			gameState = actionGameRep.getGamestate();
+			
+			//Vérification du current player en fonction de l'adresse IP
+			if(userIP.equals(gameloop.getConnectedUsers().get(currentPlayer).getUserIP())) {
+				//Récupérer le suspect
+				suspect = (Character) request.getAttribute("character");
+				
+				//Déclarer le Joueur
+				gameState.setCurrentPlayer(currentPlayer);
+
+				//invoquer la méthode
+				actionGameRep.accusation(suspect);
+				
+				currentPlayer++;
+				if(currentPlayer > gameloop.getNbrMaxPlayer()) {
+					currentPlayer = 1;
+				}
+				
+				gameloop.setCurrentPlayer(currentPlayer);
+			}
+			
+			//Setting parameters for next action
+			request.setAttribute("poolPlayerFull", true);
+			request.setAttribute("gameState", gameState);
+			request.setAttribute("gameInitialized", true);
+			request.setAttribute("isTurnClue", true);
+			request.setAttribute("isOnFirstPlay", true);
+			request.setAttribute("gameAction", "accuse");
+			request.setAttribute("currentPlayer", currentPlayer);
+			request.setAttribute("currentPlayerIP", gameloop.getConnectedUsers().get(currentPlayer).getUserIP());      
+			getServletContext().setAttribute("gameloop", gameloop);
+			request.getRequestDispatcher("plateau.jsp").forward(request, response);
+			break;
+			
+		case "endRound" :
+			
+			break;
+			
+		case "newRound" :
+			
+			break;
 
 		default:
 			break;
