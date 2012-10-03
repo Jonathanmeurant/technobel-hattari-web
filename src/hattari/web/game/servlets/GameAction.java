@@ -106,8 +106,8 @@ public class GameAction extends HttpServlet {
 					gameloop.setNbrPlayer(nbrPlayer++);
 
 					// Création du Userconnecteé
-					ConnectedUser connectedUser = new ConnectedUser();
-					connectedUser = (ConnectedUser) user;
+					ConnectedUser connectedUser = new ConnectedUser(user);
+					//connectedUser = (ConnectedUser) user;
 					// Récupération AdresseIP
 					connectedUser.setUserIP(request.getRemoteAddr());
 					connectedUser.setLogged(true);
