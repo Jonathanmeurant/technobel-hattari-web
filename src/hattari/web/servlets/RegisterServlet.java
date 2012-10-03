@@ -56,24 +56,24 @@ public class RegisterServlet extends HttpServlet {
 		
 		if (!usernameTest) {
 			request.setAttribute("error", "invalid username");
-			System.out.println("****************************************************invalid username");
-			response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request,response);
+			return;
 		} else if (!passwordTest) {
 			request.setAttribute("error", "invalid password");
-			System.out.println("****************************************************invalid password");
-			response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request,response);
+			return;
 		} else if (!firstnameTest) {
 			request.setAttribute("error", "invalid firstname");
-			System.out.println("****************************************************invalid firstname");
-			response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request,response);
+			return;
 		} else if (!lastnameTest) {
 			request.setAttribute("error", "invalid lastname");
-			System.out.println("****************************************************invalid lastname");
-			response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request,response);
+			return;
 		} else if (!emailTest) {
 			request.setAttribute("error", "invalid email");
-			System.out.println("****************************************************invalid email");
-			response.sendRedirect("register.jsp");
+			request.getRequestDispatcher("register.jsp").forward(request,response);
+			return;
 		} 
 		
 		if(loggedUser!=null){
