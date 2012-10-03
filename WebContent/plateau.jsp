@@ -1,26 +1,40 @@
 <!doctype html>
 
+<%@page import="be.technobel.domain.entity.User"%>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <title>HATTARI</title>
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
-  <script type="text/javascript" src="plateauScript.js"></script>
+  <link rel="stylesheet" href="css/styleplateau.css">
 </head>
 
 <body>
+<% User loggedUser = (User)request.getSession().getAttribute("loggeduser"); %>
+<% User  otherLoggedUser1 = (User)request.getAttribute("otherLoggedUser1"); %>
+<% User  otherLoggedUser2 = (User)request.getAttribute("otherLoggedUser2"); %>
+<% User  otherLoggedUser3 = (User)request.getAttribute("otherLoggedUser3"); %>
+
+<div class="total">
 <div class="generale">
 	<section class="joueursgauche"> 
 		<div class="pj1">
 			<img id="joueur1" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
 			<input type="submit" value="Jouer"/><br/><br/>
 			<img id="cartejoueur1" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
+			<ul>
+				<li>
+					<dl>
+						<dd>
+						</dd>
+					</dl>
+				</li>
+			</ul>
 		</div>
 		
 	
 		<div class="pj2">
 			<img id="cartejoueur2" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
-			<input type="submit" value="Jouer"/><br/>
+			<!-- <input type="submit" value="Jouer"/> --><br/>
 			<img id="joueur2" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
 			
 		</div>
@@ -68,19 +82,20 @@
 	<section class="joueursdroite">
 		<div class="pj3">
 			<img id="joueur3" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
-			<input type="submit" value="Jouer"/><br/><br/>
+			<!-- <input type="submit" value="Jouer"/> --><br/><br/>
 			<img id="cartejoueur3" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/>
 		</div>
 		
 	
 		<div class="pj4">
 			<img id="cartejoueur4" src="<%=request.getContextPath() %>/images/carte.jpg" alt="carte du joueur"><br/><br/>
-			<input type="submit" value="Jouer"/><br/>
+			<!-- <input type="submit" value="Jouer"/> --><br/>
 			<img id="joueur4" src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom"><br/>
 			
 		</div>
 	</section>
 
+</div>
 </div>
 </body>
 </html>

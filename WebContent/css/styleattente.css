@@ -1,0 +1,40 @@
+
+body{
+background-color:black;
+}
+
+.general{
+height : 666px;
+width:1000px;
+background-image: url("../images/attente.jpg");
+background-repeat:no-repeat;
+border-radius : 12px;
+margin:auto;
+margin-top : 50px;
+}
+
+.attente{
+position:relative;
+height : 666px;
+width:1000px;
+}
+.attente1{
+position: absolute;
+top: 15px;
+left : 15px;
+}
+.attente2{
+position: absolute;
+bottom: 15px;
+left : 15px;
+}
+.attente3{
+position: absolute;
+top: 15px;
+right : 15px;
+}
+.attente4{
+position: absolute;
+bottom: 15px;
+right : 15px;
+}
