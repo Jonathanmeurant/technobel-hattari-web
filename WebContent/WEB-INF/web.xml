@@ -64,46 +64,6 @@
   </filter-mapping>
   <servlet>
     <description></description>
-    <display-name>InitGame</display-name>
-    <servlet-name>InitGame</servlet-name>
-    <servlet-class>hattari.web.game.servlets.InitGame</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>InitGame</servlet-name>
-    <url-pattern>/initgame</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TurnClue</display-name>
-    <servlet-name>TurnClue</servlet-name>
-    <servlet-class>hattari.web.game.servlets.TurnClue</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TurnClue</servlet-name>
-    <url-pattern>/turnclue</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>FirstPlayer</display-name>
-    <servlet-name>FirstPlayer</servlet-name>
-    <servlet-class>hattari.web.game.servlets.FirstPlayer</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>FirstPlayer</servlet-name>
-    <url-pattern>/firstplayer</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Accusation</display-name>
-    <servlet-name>Accusation</servlet-name>
-    <servlet-class>hattari.web.game.servlets.Accusation</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Accusation</servlet-name>
-    <url-pattern>/accusation</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>NewGame</display-name>
     <servlet-name>NewGame</servlet-name>
     <servlet-class>hattari.web.game.servlets.NewGame</servlet-class>
@@ -132,18 +92,6 @@
     <servlet-name>StartNewGameServlet</servlet-name>
     <url-pattern>/StartNewGame</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-    <description></description>
-    <display-name>TestGame</display-name>
-    <servlet-name>TestGame</servlet-name>
-    <servlet-class>hattari.web.servlets.TestGame</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestGame</servlet-name>
-    <url-pattern>/TestGame</url-pattern>
-  </servlet-mapping> 
-
   <servlet>
     <description></description>
     <display-name>LogoutServlet</display-name>
@@ -154,5 +102,4 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-
 </web-app>
