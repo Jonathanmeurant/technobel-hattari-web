@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
   <script src="jquery-ui-1.8.12.custom.min.js"></script>
   <script type="text/javascript" src="plateauScript.js"></script>
 </head>
@@ -77,7 +77,7 @@
 		 		<img class="chipCarte" src="${urlimagechipCarte}" alt="nom"/>
 			</c:forEach>
 	 	 </c:forEach>
-	 	 <section id="dragSuspect1" class="droppable"></section>
+	 	<section id="dragSuspect1" class="droppable"></section>
 		<section id="dragSuspect2" class="droppable"></section>
 		<section id="dragSuspect3" class="droppable"></section>
 		</div>
