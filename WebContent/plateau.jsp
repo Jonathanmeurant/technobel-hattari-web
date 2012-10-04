@@ -10,8 +10,8 @@
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-  <script src="jquery-ui-1.8.12.custom.min.js"></script>
-  <script type="text/javascript" src="plateauScript.js"></script>
+  <script src="<%=request.getContextPath() %>/js/jquery-ui-1.8.12.custom.min.js"></script>
+  <script type="text/javascript" src="<%=request.getContextPath() %>/js/plateauScript.js"></script>
 </head>
 
 <% User loggedUser = (User)request.getSession().getAttribute("loggedUser");%>
@@ -85,7 +85,7 @@
 		<div class="pjoueur1">
 		<c:forEach  items="${gameState.user.get(0).chips}"  var="chips">
 		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
-		 	<div><img class="pj1pion1" src="${urlimagechip}" alt="nom"/></div>
+		 	<div><img  class="pj1pion1"src="${urlimagechip}" alt="nom"/></div>
 	 	 </c:forEach>
 		</div>
 		<div class="pjoueur2">
