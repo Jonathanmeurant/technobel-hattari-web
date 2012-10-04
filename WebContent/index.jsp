@@ -42,7 +42,7 @@
 			
 			
 			<p class="text">
-			<a href="reglehattari.pdf" target="_blank">R&egrave;gles compl&egrave;tes en pdf</a><br/>
+			<a href="Hattari.pdf" target="_blank">R&egrave;gles compl&egrave;tes en pdf</a><br/>
 			<b>Contexte :</b><br/>
 				D&eacute;masquerez-vous le coupable ?
 
