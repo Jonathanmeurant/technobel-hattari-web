@@ -57,6 +57,7 @@ public class GameAction extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("*********************************GameAction (GET)");
 		doPost(request, response);
 	}
 
@@ -66,26 +67,36 @@ public class GameAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("*********************************GameAction (POST)");
+		
+		System.out.println("*********************************get gameLoop");
 		gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
 
 		if (gameloop == null) {
+			System.out.println("*********************************Create New gameLoop");
 			// No Gameloop exists, Create It.
 			gameloop = new GameLoop();
 		}
 
+		System.out.println("*********************************Récupération Param gameAction");
 		gameAction = request.getParameter("gameAction");
 		// si game Action n'est pas passé en Param, il est passé en Attribut.
 		if (gameAction == null) {
+			System.out.println("*********************************Récupération Attribut gameAction");
 			gameAction = (String) request.getAttribute("gameAction");
 		}
 
+		System.out.println("*********************************Récupération Session userLogged");
 		// Récupérer le username passé en session
 		userLogged = (User) request.getSession().getAttribute("loggedUser");
 		username = userLogged.getUsername();
+		System.out.println("*********************************Récupération username "+username);
 
 		// Récupérer le User de la DB.
-		user = userRep.findByUsername(username);
+		//user = userRep.findByUsername(username);
+		user = userLogged;
 		userIP = request.getRemoteAddr();
+		System.out.println("*********************************Récupération adressIP"+ userIP);
 
 		System.out.println(userIP + " username : " + username);
 		System.out.println(userIP + " gameAction : " + gameAction);
