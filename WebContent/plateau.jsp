@@ -67,7 +67,7 @@
 		<div class="cartes">
 		
 		 <c:url value="${gameState.victim.image}"  var="urlimagevic"/>
-		<img id="victime" src="${urlimagevic}" alt="nom"/>
+		<img id="victime" src="${urlimagevic}" alt="nom"/><br>
 		
 		 <c:forEach  items="${gameState.suspects}"  var="suspect">
 		 	<c:url value="${suspect.image}"  var="urlimage"/>
@@ -76,7 +76,7 @@
 				<c:url value="${chip.imageRecto}"  var="urlimagechipCarte"/>
 		 		<img class="chipCarte" src="${urlimagechipCarte}" alt="nom"/>
 			</c:forEach>
-	 	 </c:forEach>
+	 	 </c:forEach><br>
 	 	<section id="dragSuspect1" class="droppable"></section>
 		<section id="dragSuspect2" class="droppable"></section>
 		<section id="dragSuspect3" class="droppable"></section>
