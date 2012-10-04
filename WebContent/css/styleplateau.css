@@ -149,3 +149,7 @@ border-radius : 12px;
 	height: 50px;
 	display: inline-block;
 }
+
+.victime{
+	background-image: url(../images/carte.jpg);
+}
