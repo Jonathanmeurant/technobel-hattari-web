@@ -6,7 +6,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="5;url=http://10.10.6.50:8080/TechnobelHattariWeb/gameaction?gameAction=<%=(String)request.getAttribute("gameAction")%>">
+  <meta http-equiv="refresh" content="5;url=<%=request.getContextPath()%>/gameaction?gameAction=<%=(String)request.getAttribute("gameAction")%>">
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styleattente.css">
 </head>
