@@ -29,14 +29,44 @@
 		</div>
 		
 		<h2>${fn:length(gameloop.connectedUsers)}</h2>
-		<c:if test="fn:length(gameloop.connectedUsers)>1}">
+		<c:set var="testvar" value="${fn:length(gameloop.connectedUsers)}" />
+		
+		<c:if test="${testvar>1}">
 		<div class="attente2">
-		 <c:url value="${gameloop.connectedUsers.get(1).avatar}"  var="urlimageavatarj2"/>
-		<img id="joueur1" src="${urlimageavatarj2}" alt="nom"><br/>
+		<c:url value="${gameloop.connectedUsers.get(1).avatar}"  var="urlimageavatarj2"/>
+		<img id="joueur2" src="${urlimageavatarj2}" alt="nom"><br/>
 		<ul class="joueur">
 			<li class="icon">
 				<dl>
-					<dd class="joueur1">${gameloop.connectedUsers.get(1).username}</dd>
+					<dd class="joueur2">${gameloop.connectedUsers.get(1).username}</dd>
+				</dl>
+			</li>
+		</ul>
+		</div>
+		</c:if>
+		
+		<c:if test="${testvar>2}">
+		<div class="attente3">
+		<c:url value="${gameloop.connectedUsers.get(2).avatar}"  var="urlimageavatarj3"/>
+		<img id="joueur3" src="${urlimageavatarj3}" alt="nom"><br/>
+		<ul class="joueur">
+			<li class="icon">
+				<dl>
+					<dd class="joueur3">${gameloop.connectedUsers.get(2).username}</dd>
+				</dl>
+			</li>
+		</ul>
+		</div>
+		</c:if>
+		
+		<c:if test="${testvar>3}">
+		<div class="attente4">
+		<c:url value="${gameloop.connectedUsers.get(3).avatar}"  var="urlimageavatarj4"/>
+		<img id="joueur4" src="${urlimageavatarj4}" alt="nom"><br/>
+		<ul class="joueur">
+			<li class="icon">
+				<dl>
+					<dd class="joueur4">${gameloop.connectedUsers.get(3).username}</dd>
 				</dl>
 			</li>
 		</ul>
