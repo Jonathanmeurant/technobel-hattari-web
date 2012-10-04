@@ -3,7 +3,7 @@ $(function() {
 	$(".pjoueur2>div").draggable({ revert : 'invalid' });
 	$(".pjoueur3>div").draggable({ revert : 'invalid' });
 	$(".pjoueur4>div").draggable({ revert : 'invalid' });
-	$("#dragSuspect1").droppable();
+	/*$("#dragSuspect1").droppable();
 	$("#dragSuspect2").droppable();
-	$("#dragSuspect3").droppable();
+	$("#dragSuspect3").droppable();*/
 });

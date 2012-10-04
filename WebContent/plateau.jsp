@@ -62,20 +62,8 @@
 	
 	<section class="plateau">
 	<div class="plateau1">
-		<div class="pjoueur1">
 		
-		<c:forEach  items="${gameState.user.get(0).chips}"  var="chips">
-		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
-		 	<img class="pj1pion1" src="${urlimagechip}" alt="nom"/>
-	 	 </c:forEach>
 		
-		</div>
-		<div class="pjoueur2">
-		<c:forEach  items="${gameState.user.get(1).chips}"  var="chips">
-		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
-		 	<img class="pj2pion1" src="${urlimagechip}" alt="nom"/>
-	 	 </c:forEach>
-		</div>
 		<div class="cartes">
 		
 		 <c:url value="${gameState.victim.image}"  var="urlimagevic"/>
@@ -89,18 +77,34 @@
 		 		<img class="chipCarte" src="${urlimagechipCarte}" alt="nom"/>
 			</c:forEach>
 	 	 </c:forEach>
-	 	 
+	 	 <section id="dragSuspect1" class="droppable"></section>
+		<section id="dragSuspect2" class="droppable"></section>
+		<section id="dragSuspect3" class="droppable"></section>
 		</div>
+		
+		<div class="pjoueur1">
+		<c:forEach  items="${gameState.user.get(0).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<div><img class="pj1pion1" src="${urlimagechip}" alt="nom"/></div>
+	 	 </c:forEach>
+		</div>
+		<div class="pjoueur2">
+		<c:forEach  items="${gameState.user.get(1).chips}"  var="chips">
+		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
+		 	<div><img class="pj2pion1" src="${urlimagechip}" alt="nom"/></div>
+	 	 </c:forEach>
+		</div>
+		
 		<div class="pjoueur3">
 		<c:forEach  items="${gameState.user.get(2).chips}"  var="chips">
 		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
-		 	<img class="pj3pion1" src="${urlimagechip}" alt="nom"/>
+		 	<div><img class="pj3pion1" src="${urlimagechip}" alt="nom"/></div>
 	 	</c:forEach>
 		</div>
 		<div class="pjoueur4">
 		<c:forEach  items="${gameState.user.get(3).chips}"  var="chips">
 		 <c:url value="${chips.imageRecto}"  var="urlimagechip"/>
-		 	<img class="pj4pion1" src="${urlimagechip}" alt="nom"/>
+		 	<div><img class="pj4pion1" src="${urlimagechip}" alt="nom"/></div>
 	 	</c:forEach>
 		</div>
 	</div>
