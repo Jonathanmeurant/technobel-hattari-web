@@ -38,7 +38,7 @@ public class GameAction extends HttpServlet {
 	int currentPlayer;
 
 	int i; // un compteur quelconque...
-
+	
 	@EJB
 	private UserRepository userRep;
 	@EJB(beanName = "actionGame")
@@ -193,7 +193,7 @@ public class GameAction extends HttpServlet {
 				
 				getServletContext().setAttribute("gameloop", gameloop);
 				
-				System.out.println("******sent initGame to plateau.jsp "+ userIP);
+				System.out.println("******sent initGame to attente.jsp + initGame"+ userIP);
 				
 				request.getRequestDispatcher("attente.jsp").forward(request,
 						response);
@@ -218,7 +218,7 @@ public class GameAction extends HttpServlet {
 			break;
 
 		case "initGame":
-			System.out.println(userIP + " initGame");
+			System.out.println(userIP + "****************** initGame");
 			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
 
 			if (!gameloop.isInitialized()) {
@@ -232,23 +232,31 @@ public class GameAction extends HttpServlet {
 				actionGameRep.intializeGame(userListe);
 
 				gameloop.setInitialized(true);
+				
+				gameState = actionGameRep.getGamestate();
 			}
 
-			// récupération du GameState
-			gameState = actionGameRep.getGamestate();
-
+			synchronized (gameState) {
+				request.setAttribute("gameState", gameState);
+				System.out.println("******  gameState Victim " + gameState);
+			}
+			
+			System.out.println("******  gameState Victim " );
+			
+			
 			// Setting parameters for next action
 			request.setAttribute("poolPlayerFull", true);
-			request.setAttribute("gameState", gameState);
+			
 			request.setAttribute("gameInitialized", true);
 			request.setAttribute("isTurnClue", false);
 			request.setAttribute("isOnFirstPlay", false);
 			request.setAttribute("gameAction", "waitturn");
 
 			getServletContext().setAttribute("gameloop", gameloop);
+			
+			System.out.println("******  plateau.jsp "+ userIP);
 
-			request.getRequestDispatcher("plateau.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("plateau.jsp").forward(request,response);
 			break;
 
 		case "waitturn":
@@ -265,7 +273,8 @@ public class GameAction extends HttpServlet {
 					// liste
 					gameloop.addUserListIpWaitTurn(userIP);
 					// Incrémenter le noimbre de joueurs en attente
-					gameloop.setNbrWaitToTurnClue(nbrWaitToTurnClue++);
+					nbrWaitToTurnClue++;
+					gameloop.setNbrWaitToTurnClue(nbrWaitToTurnClue);
 
 					if (nbrWaitToTurnClue == gameloop.getNbrMaxPlayer()) {
 						// Tous les joueurs sont en attente !

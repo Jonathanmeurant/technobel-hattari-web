@@ -7,6 +7,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+<!-- <meta http-equiv="refresh" content="5;url=<%=request.getContextPath()%>/plateau.jsp?gameAction=<%=(String)request.getAttribute("gameAction")%>">-->
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
