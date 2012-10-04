@@ -46,9 +46,10 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
          <ul>
             <li><a href="#nogo">duel</a></li>
             <li><a href="#nogo">3 joueurs</a></li>
-            <li><a href="#nogo">4 joueurs</a></li>
+            <li><a href="<%=request.getContextPath() %>/gameaction?gameAction=joinGame">4 joueurs</a></li>
          </ul>
       </li>
+      
       <li>Bonjour <%=loggedUser.getUsername() %></li>
    </ul></td></TR>
 </table>	
