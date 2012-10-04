@@ -133,5 +133,6 @@ label{color:white;}
 	color:red;
 }
 
-.register{float:right;
-}
+li{color:white;
+text-shadow: 2px 5px 3px #e06d2f;
+        filter: dropshadow(color=#e06d2f, offx=2, offy=5);}
