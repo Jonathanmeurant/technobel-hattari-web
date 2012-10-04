@@ -68,7 +68,7 @@
 		<div class="cartes">
 		
 		 <c:url value="${gameState.victim.image}"  var="urlimagevic"/>
-		<img id="victime" src="${urlimagevic}" alt="nom"/><br>
+		<img class="victime" id="victime" src="${urlimagevic}" alt="nom"/><br>
 		
 		 <c:forEach  items="${gameState.suspects}"  var="suspect">
 		 	<c:url value="${suspect.image}"  var="urlimage"/>
