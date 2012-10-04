@@ -106,6 +106,8 @@ public class GameAction extends HttpServlet {
 			System.out.println(userIP + " joinGame");
 			// Récupérer le nombre de joueurs dans la partie.
 			int nbrPlayer = gameloop.getNbrPlayer();
+			
+			System.out.println("******Récupération nbrPlayer "+ userIP+" "+nbrPlayer);
 
 			if (nbrPlayer < gameloop.getNbrMaxPlayer()) {
 				// Le nombre Max de joueurs n'est pas atteint
@@ -130,17 +132,22 @@ public class GameAction extends HttpServlet {
 					if (nbrPlayer == gameloop.getNbrMaxPlayer()) {
 						gameloop.setPoolPlayerFull(true);
 						request.setAttribute("poolPlayerFull", true);
+						
+						System.out.println("******Récupération poolFull "+ userIP);
+						
 					}
 				} else {
 					// Le playser n'est pas dans la liste, on n'a rien ajouté
 					// donc le Pool n'a pas changé.
 					request.setAttribute("poolPlayerFull", false);
+					System.out.println("******Récupération NOT poolFull "+ userIP);
 				}
 			} else {
 				// Le nombre max de player est atteint
 				if (!gameloop.isPoolPlayerFull()) {
 					gameloop.setPoolPlayerFull(true);
 					request.setAttribute("poolPlayerFull", true);
+					System.out.println("******Récupération poolFull "+ userIP);
 				}
 			}
 
@@ -150,6 +157,7 @@ public class GameAction extends HttpServlet {
 			request.setAttribute("isTurnClue", false);
 			request.setAttribute("isOnFirstPlay", false);
 			request.setAttribute("gameAction", "waitinit");
+			System.out.println("******gameAction sent waitinit "+ userIP);
 			getServletContext().setAttribute("gameloop", gameloop);
 
 			
@@ -159,10 +167,11 @@ public class GameAction extends HttpServlet {
 			break;
 
 		case "waitinit":
-			System.out.println(userIP + " waitinit");
+			System.out.println(userIP + " ENTER In waitinit");
 			gameloop = (GameLoop) getServletContext().getAttribute("gameloop");
 
 			if (gameloop.isPoolPlayerFull()) {
+				System.out.println("******waitint poolFull "+ userIP);
 				// Setting parameters for next action
 				request.setAttribute("poolPlayerFull", true);
 				request.setAttribute("gameAction", "initGame");
@@ -173,10 +182,13 @@ public class GameAction extends HttpServlet {
 				
 				getServletContext().setAttribute("gameloop", gameloop);
 				
+				System.out.println("******sent initGame to plateau.jsp "+ userIP);
+				
 				request.getRequestDispatcher("plateau.jsp").forward(request,
 						response);
 			} else {
 				// Setting parameters for next action
+				System.out.println("******waitint NOT poolFull "+ userIP);
 				request.setAttribute("poolPlayerFull", false);
 				request.setAttribute("gameAction", "waitinit");
 				request.setAttribute("gameState", null);
@@ -185,6 +197,8 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("isOnFirstPlay", false);
 				
 				getServletContext().setAttribute("gameloop", gameloop);
+				
+				System.out.println("******sent waitint to attente.jsp "+ userIP);
 				
 				request.getRequestDispatcher("attente.jsp").forward(request,
 						response);
