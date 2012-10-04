@@ -26,8 +26,8 @@ import be.technobel.domain.entity.Character;
 public class GameAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	GameLoop gameloop;
-	String gameAction;
+	GameLoop gameloop;		//memorisation des parametres du jeu
+	String gameAction;		//A retourner dans TOUTES les requetes
 	String username;
 	User userLogged;
 	User user;
@@ -114,6 +114,7 @@ public class GameAction extends HttpServlet {
 
 				// Vérifier si le user est déjà dans la Liste
 				if (!gameloop.isUserInList(userIP)) {
+					System.out.println("******Récupération User NOT in List "+ userIP);
 					// on incrément le nombre de joueurs
 					gameloop.setNbrPlayer(nbrPlayer++);
 
@@ -130,20 +131,29 @@ public class GameAction extends HttpServlet {
 					gameloop.addConnectedUser(connectedUser);
 
 					if (nbrPlayer == gameloop.getNbrMaxPlayer()) {
+						System.out.println("******nbrPlayer "+nbrPlayer+" == MaxPlayer"+gameloop.getNbrMaxPlayer()+" "+ userIP);
 						gameloop.setPoolPlayerFull(true);
 						request.setAttribute("poolPlayerFull", true);
 						
 						System.out.println("******Récupération poolFull "+ userIP);
 						
+					} else {
+						System.out.println("******nbrPlayer "+nbrPlayer+" !== MaxPlayer"+gameloop.getNbrMaxPlayer()+" "+ userIP);
+						gameloop.setPoolPlayerFull(false);
+						request.setAttribute("poolPlayerFull", true);
+						System.out.println("******Récupération poolFull "+ userIP);
 					}
+						
 				} else {
 					// Le playser n'est pas dans la liste, on n'a rien ajouté
 					// donc le Pool n'a pas changé.
+					System.out.println("******Récupération User in List "+ userIP);
 					request.setAttribute("poolPlayerFull", false);
 					System.out.println("******Récupération NOT poolFull "+ userIP);
 				}
 			} else {
 				// Le nombre max de player est atteint
+				System.out.println("******nbrPlayer "+nbrPlayer+" < MaxPlayer"+gameloop.getNbrMaxPlayer()+" "+ userIP);
 				if (!gameloop.isPoolPlayerFull()) {
 					gameloop.setPoolPlayerFull(true);
 					request.setAttribute("poolPlayerFull", true);
