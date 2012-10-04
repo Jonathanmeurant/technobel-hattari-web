@@ -116,7 +116,8 @@ public class GameAction extends HttpServlet {
 				if (!gameloop.isUserInList(userIP)) {
 					System.out.println("******Récupération User NOT in List "+ userIP);
 					// on incrément le nombre de joueurs
-					gameloop.setNbrPlayer(nbrPlayer++);
+					nbrPlayer++;
+					gameloop.setNbrPlayer(nbrPlayer);
 
 					// Création du Userconnecteé
 					ConnectedUser connectedUser = new ConnectedUser(user);
@@ -194,7 +195,7 @@ public class GameAction extends HttpServlet {
 				
 				System.out.println("******sent initGame to plateau.jsp "+ userIP);
 				
-				request.getRequestDispatcher("plateau.jsp").forward(request,
+				request.getRequestDispatcher("attente.jsp").forward(request,
 						response);
 			} else {
 				// Setting parameters for next action
