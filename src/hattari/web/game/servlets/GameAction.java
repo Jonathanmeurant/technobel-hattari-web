@@ -310,15 +310,17 @@ public class GameAction extends HttpServlet {
 					.getUserIP())) {
 				if (!gameloop.isOnFirstPlayer()) {
 					// La Methode FirstPlayer n'as pas été invoquée
-
+					gameloop.getConnectedUsers().get(currentPlayer).setPlaying(true);
+					
 					// récupérer le "character"
 					character = (Character) request.getAttribute("character");
-
+					
 					// Déclarer le Joueur
 					gameState.setCurrentPlayer(currentPlayer);
-
+					
 					// Invocation de la méthode
 					actionGameRep.firstPlayer(character);
+					
 
 					gameloop.setOnFirstPlayer(true);
 
@@ -360,8 +362,16 @@ public class GameAction extends HttpServlet {
 			gameState = actionGameRep.getGamestate();
 
 			// Vérification du current player en fonction de l'adresse IP
-			if (userIP.equals(gameloop.getConnectedUsers().get(currentPlayer)
-					.getUserIP())) {
+			if (userIP.equals(gameloop.getConnectedUsers().get(currentPlayer).getUserIP())) {
+				
+				//qui joue maintenant
+				int lastPlayer = currentPlayer--;
+				if(lastPlayer == 0) {
+					lastPlayer = gameloop.getNbrMaxPlayer();
+				}
+				gameloop.getConnectedUsers().get(lastPlayer).setPlaying(true);
+				gameloop.getConnectedUsers().get(currentPlayer).setPlaying(true);
+				
 				// Récupérer le suspect
 				suspect = (Character) request.getAttribute("character");
 
