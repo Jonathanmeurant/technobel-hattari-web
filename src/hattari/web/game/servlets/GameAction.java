@@ -142,7 +142,7 @@ public class GameAction extends HttpServlet {
 			request.setAttribute("gameAction", "waitinit");
 			getServletContext().setAttribute("gameloop", gameloop);
 
-			request.getRequestDispatcher("plateau.jsp").forward(request,
+			request.getRequestDispatcher("attente.jsp").forward(request,
 					response);
 			break;
 
@@ -158,6 +158,11 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("gameInitialized", false);
 				request.setAttribute("isTurnClue", false);
 				request.setAttribute("isOnFirstPlay", false);
+				
+				getServletContext().setAttribute("gameloop", gameloop);
+				
+				request.getRequestDispatcher("plateau.jsp").forward(request,
+						response);
 			} else {
 				// Setting parameters for next action
 				request.setAttribute("poolPlayerFull", false);
@@ -166,12 +171,13 @@ public class GameAction extends HttpServlet {
 				request.setAttribute("gameInitialized", false);
 				request.setAttribute("isTurnClue", false);
 				request.setAttribute("isOnFirstPlay", false);
+				
+				getServletContext().setAttribute("gameloop", gameloop);
+				
+				request.getRequestDispatcher("attente.jsp").forward(request,
+						response);
 			}
 
-			getServletContext().setAttribute("gameloop", gameloop);
-
-			request.getRequestDispatcher("plateau.jsp").forward(request,
-					response);
 			break;
 
 		case "initGame":
@@ -282,8 +288,7 @@ public class GameAction extends HttpServlet {
 			request.setAttribute("isOnFirstPlay", false);
 			request.setAttribute("gameAction", "firstPlay");
 			request.setAttribute("currentPlayer", currentPlayer);
-			request.setAttribute("currentPlayerIP", gameloop
-					.getConnectedUsers().get(currentPlayer).getUserIP());
+			request.setAttribute("currentPlayerIP", gameloop.getConnectedUsers().get(currentPlayer).getUserIP());
 
 			getServletContext().setAttribute("gameloop", gameloop);
 
@@ -317,6 +322,7 @@ public class GameAction extends HttpServlet {
 					
 					// Déclarer le Joueur
 					gameState.setCurrentPlayer(currentPlayer);
+					actionGameRep.setGamestate(gameState);
 					
 					// Invocation de la méthode
 					actionGameRep.firstPlayer(character);
@@ -377,7 +383,8 @@ public class GameAction extends HttpServlet {
 
 				// Déclarer le Joueur
 				gameState.setCurrentPlayer(currentPlayer);
-
+				actionGameRep.setGamestate(gameState);
+				
 				// invoquer la méthode
 				actionGameRep.accusation(suspect);
 
