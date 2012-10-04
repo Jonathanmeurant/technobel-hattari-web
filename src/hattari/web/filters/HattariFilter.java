@@ -28,30 +28,30 @@ public class HattariFilter implements Filter {
 
 	@SuppressWarnings("unused")
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest)request;
-		HttpServletResponse httpResponse = (HttpServletResponse)response;
-
-		User loggedUser = (User) httpRequest.getSession().getAttribute("loggedUser");
-		
-		String error = null;
-		System.out.println("------------------------  " + httpRequest.getServletPath());
-		if(httpRequest.getServletPath().contains("index")){
-			if(loggedUser!=null){
-				error = "You are already logged with username '"+loggedUser.getUsername()+"' !";
-				request.setAttribute("error", error);
-				request.getRequestDispatcher("/Index").forward(request, response);
-				return;
-			}
-		}
-		
-		if(error!=null && !error.isEmpty()){
-			request.setAttribute("error", error);
-			request.setAttribute("wantedUrl", httpRequest.getServletPath());
-			httpRequest.getRequestDispatcher("/index.jsp").forward(httpRequest, httpResponse);
-		}
-		else{
+//		HttpServletRequest httpRequest = (HttpServletRequest)request;
+//		HttpServletResponse httpResponse = (HttpServletResponse)response;
+//
+//		User loggedUser = (User) httpRequest.getSession().getAttribute("loggedUser");
+//		
+//		String error = null;
+//		System.out.println("------------------------  " + httpRequest.getServletPath());
+//		if(httpRequest.getServletPath().contains("index")){
+//			if(loggedUser!=null){
+//				error = "You are already logged with username '"+loggedUser.getUsername()+"' !";
+//				request.setAttribute("error", error);
+//				request.getRequestDispatcher("/Index").forward(request, response);
+//				return;
+//			}
+//		}
+//		
+//		if(error!=null && !error.isEmpty()){
+//			request.setAttribute("error", error);
+//			request.setAttribute("wantedUrl", httpRequest.getServletPath());
+//			httpRequest.getRequestDispatcher("/index.jsp").forward(httpRequest, httpResponse);
+//		}
+//		else{
 			chain.doFilter(request, response);
-		}
+//		}
 		
 
 	}

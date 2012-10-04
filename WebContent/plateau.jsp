@@ -9,6 +9,9 @@
   <meta charset="utf-8">
   <title>HATTARI</title>
   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/styleplateau.css">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="jquery-ui-1.8.12.custom.min.js"></script>
+  <script type="text/javascript" src="plateauScript.js"></script>
 </head>
 
 <% User loggedUser = (User)request.getSession().getAttribute("loggedUser");%>
@@ -20,6 +23,8 @@
 	 
 <div class="total">
 <div class="generale">
+
+
 	<section class="joueursgauche"> 
 		<div class="pj1">
 		
