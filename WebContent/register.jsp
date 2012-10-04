@@ -55,7 +55,7 @@
 					<input <% if (loggedUser != null && "/images/jess.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/jess.jpg" /> <img src="<%=request.getContextPath() %>/images/jess.jpg" alt="nom" />
 					<input <% if (loggedUser != null && "/images/johna.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/johna.jpg" /> <img src="<%=request.getContextPath() %>/images/johna.jpg" alt="nom" />
 					<input <% if (loggedUser != null && "/images/johnm.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/johnm.jpg" /> <img src="<%=request.getContextPath() %>/images/johnm.jpg" alt="nom" />
-					<input <% if (loggedUser != null && "/images/xavier.jpg".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/xavier.jpg" /> <img src="<%=request.getContextPath() %>/images/xavier.jpg" alt="nom" />
+					<input <% if (loggedUser != null && "/images/exo.gif".equals(loggedUser.getAvatar())){%>checked<%} %> type="radio" name="image" value="/images/exo.gif" /> <img src="<%=request.getContextPath() %>/images/exo.gif" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
 					<input type="radio" name="image" value="/images/imgavabase.jpg" /> <img src="<%=request.getContextPath() %>/images/imgavabase.jpg" alt="nom" />
