@@ -1,4 +1,5 @@
 <!doctype html>
+<jsp:root>
 
 <%@page import="be.technobel.domain.datamodel.ConnectedUser"%>
 <%@page import="be.technobel.domain.entity.User"%>
@@ -60,9 +61,17 @@
 			</li>
 		</ul>
 		</div>
+		<nav>
+			<% if (gameloop.isPoolPlayerFull()){ %>
+			<form method="get" action="plateau.jsp">
+				<input type="button" value="Start Game" />
+			</form>
+			<%} %>
+		</nav>
 	</section>
 
 
 </div>
 </body>
 </html>
+</jsp:root>
